@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+	<button onclick="ajaxReq()">클릭시 비동기로name은 1, role=웃음 정보 검색</button>
+	<br><hr><br>
+	<div id="viewData"></div>
+	<script>
+	function ajaxReq() {
+		axios.get("http://127.0.0.1/employees").then(function (resData){
+			/* document.getElementById("viewData").innerText= JSON.stringify(resData.data); */
+			document.getElementById("viewData").innerText= resData.data[1].name + " "+ resData.data[1].role;
+			console.log(resData.data[0]);
+		}).catch(function(){
+			console.log("존재x");
+		})
+		
+	}
+	</script>
+</body>
+</html>
